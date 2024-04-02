@@ -13,25 +13,57 @@
 </head>
 
 <body>
-    <main>
+    <main class="container">
         <h3 class="text-center mt-3 mb-3 font-weight-bold text-uppercase">Admin dashboard</h3>
+
+        <h6>1. Kích hoạt thiết bị</h6>
+        <div style="overflow-x: auto;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Key</th>
+                        <th scope="col">Mã thiết bị</th>
+                        <th scope="col">Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody class="tableViewAllKey"></tbody>
+            </table>
+        </div>
+        <br>
+        <h6>2. Kiểm tra logs</h6>
+        <div class="d-flex justify-content-between mb-2 mt-2">
+            <button type="button" class="btn btn-info loadLogs">Tải logs</button>
+            <button type="button" class="btn btn-danger delLogs">Xóa toàn bộ</button>
+        </div>
+        <textarea class="form-control viewLogs" w-100 aria-label="With textarea" style="height: 35px; color: black;"
+            disabled>Tải dữ liệu để xem logs</textarea>
+        <div class="mb-5"></div>
+        <br>
+        <h6>3. Thay đổi mật khẩu</h6>
+        <input type="password" class="form-control mb-2 passOld" placeholder="Nhập mật khẩu hiện tại">
+        <div class="input-group">
+            <input type="password" class="form-control passNew" placeholder="Nhập mật khẩu mới">
+            <input type="password" class="form-control rePassNew" placeholder="Nhập mật lại mật khẩu mới">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-info btnChangePass">Thay đổi</button>
+            </div>
+        </div>
     </main>
 
-    <div id="dialog_login_main" bis_skin_checked="1">
-        <div class="modal fade show" id="dialog_login" tabindex="-1" data-backdrop="static"
-            style="padding-right: 7px; display: block;" aria-modal="true" role="dialog" bis_skin_checked="1">
-            <div class="modal-dialog" bis_skin_checked="2">
-                <div class="modal-content" id="dialog-content" bis_skin_checked="1">
-                    <div class="modal-header" bis_skin_checked="1">
-                        <h5 class="modal-title" style="font-weight: 600;" id="exampleModalLabel">Vui lòng đăng nhập</h5>
-                    </div>
-                    <div class="modal-body" bis_skin_checked="1">
-                        <input type="text" id="l-username" class="form-control mb-2" placeholder="Tài khoản">
-                        <input type="password" id="l-password" class="form-control" placeholder="Mật khẩu">
-                    </div>
-                    <div class="modal-footer" bis_skin_checked="1">
-                        <button type="button" class="btn btn-success" id="btn-login">Đăng nhập</button>
-                    </div>
+    <div class="modal fade" id="dialog_login" tabindex="-1" data-backdrop="static"
+        style="padding-right: 7px; display: block;" aria-modal="true" role="dialog" bis_skin_checked="1">
+        <div class="modal-dialog" bis_skin_checked="2">
+            <div class="modal-content" id="dialog-content" bis_skin_checked="1">
+                <div class="modal-header" bis_skin_checked="1">
+                    <h5 class="modal-title" style="font-weight: 600;">Vui lòng đăng nhập</h5>
+                </div>
+                <div class="modal-body" bis_skin_checked="1">
+                    <input type="text" id="username" class="form-control mb-2" placeholder="Tài khoản">
+                    <input type="password" id="password" class="form-control" placeholder="Mật khẩu">
+                </div>
+                <div class="modal-footer" bis_skin_checked="1">
+                    <button type="button" class="btn btn-success" id="btn-login">Đăng nhập</button>
                 </div>
             </div>
         </div>
