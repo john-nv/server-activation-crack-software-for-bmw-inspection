@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+
+    <title>Admin BMW</title>
+</head>
+
+<body>
+    <main>
+        <h3 class="text-center mt-3 mb-3 font-weight-bold text-uppercase">Admin dashboard</h3>
+    </main>
+
+    <div id="dialog_login_main" bis_skin_checked="1">
+        <div class="modal fade show" id="dialog_login" tabindex="-1" data-backdrop="static"
+            style="padding-right: 7px; display: block;" aria-modal="true" role="dialog" bis_skin_checked="1">
+            <div class="modal-dialog" bis_skin_checked="2">
+                <div class="modal-content" id="dialog-content" bis_skin_checked="1">
+                    <div class="modal-header" bis_skin_checked="1">
+                        <h5 class="modal-title" style="font-weight: 600;" id="exampleModalLabel">Vui lòng đăng nhập</h5>
+                    </div>
+                    <div class="modal-body" bis_skin_checked="1">
+                        <input type="text" id="l-username" class="form-control mb-2" placeholder="Tài khoản">
+                        <input type="password" id="l-password" class="form-control" placeholder="Mật khẩu">
+                    </div>
+                    <div class="modal-footer" bis_skin_checked="1">
+                        <button type="button" class="btn btn-success" id="btn-login">Đăng nhập</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
