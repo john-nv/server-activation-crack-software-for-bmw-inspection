@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <main class="container">
+    <main class="container-fluid">
         <h3 class="text-center mt-3 mb-3 font-weight-bold text-uppercase">Admin dashboard</h3>
 
         <h6>1. Kích hoạt thiết bị</h6>
@@ -25,9 +25,29 @@
                         <th scope="col">Key</th>
                         <th scope="col">Mã thiết bị</th>
                         <th scope="col">Trạng thái</th>
+                        <th scope="col">Ghi chú</th>
+                        <th scope="col">Xóa</th>
                     </tr>
                 </thead>
-                <tbody class="tableViewAllKey"></tbody>
+                <tbody class="tableViewAllKey">
+                    <th scope="row">1</th>
+                    <td>660d28066ea8a6dc2f8b4384</td>
+                    <td>DESKTOP-CDO0SQ2|Rev X.0x|ASUSTeK COMPUTER INC.|160778869521920</td>
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" data-userId="${res[i]._id}">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <textarea class="form-control"></textarea>
+                            <div class="input-group-prepend">
+                                <button class="btn btn-info">Sửa</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td><button class="btn btn-danger">Xóa</button></td>
+                </tbody>
             </table>
         </div>
         <br>

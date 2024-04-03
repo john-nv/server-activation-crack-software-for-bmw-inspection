@@ -53,13 +53,32 @@ $(document).ready(function () {
             try {
                 const res = await $.post("/key/getAllkey");
                 console.log(res)
+                $('.tableViewAllKey').html('');
                 for (let i = 0; i < res.length; i++) {
                     let addClassMsgNew = res[i].active ? 'bg-success' : '';
-                    const user = $('<tr>', {
-                        class: `${addClassMsgNew}`
-                    }).html(`<th scope="row">${i + 1}</th>
-                        <td>${res[i]._id}</td><td>${res[i].key}</td>
-                        <td><div class="form-check"><input type="checkbox" class="form-check-input" data-userId="${res[i]._id}" ${res[i].active ? 'checked' : ''}></div></td>`);
+                    const _id = res[i]._id;
+                    const note = res[i].note;
+                    const user = $('<tr>').addClass(addClassMsgNew).html(`
+                        <th scope="row">${i + 1}</th>
+                        <td>${_id}</td>
+                        <td>${res[i].key}</td>
+                        <td>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" data-userId="${_id}" ${res[i].active ? 'checked' : ''}>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-group">
+                                <textarea class="form-control" style="height: 40px;">${note}</textarea>
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-info edit-btn">Sửa</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger delete-btn">Xóa</button>
+                        </td>
+                    `);
                     $('.tableViewAllKey').append(user);
                 }
             } catch (error) {
@@ -68,6 +87,39 @@ $(document).ready(function () {
                 // alert(error.responseJSON.message || 'Đã xảy ra lỗi!');
             }
         }
+        $(document).on('click', '.edit-btn', async function () {
+            const row = $(this).closest('tr');
+            const _id = row.find('td:first').text();
+            const note = row.find('textarea').val();
+            console.log('ID:', _id);
+            console.log('Nội dung của textarea:', note);
+            try {
+                const res = await $.post("/key/editNoteOne", { note: note, id: _id });
+                console.log(res)
+                alert(res.message)
+            } catch (error) {
+                console.log(error);
+                const errorMessage = error.responseJSON ? error.responseJSON.message : "Có lỗi xảy ra";
+                alert(errorMessage);
+            }
+        });
+
+        $(document).on('click', '.delete-btn', async function () {
+            const row = $(this).closest('tr');
+            const _id = row.find('td:first').text();
+            console.log('ID:', _id);
+            try {
+                const res = await $.post("/key/deleteOne", { id: _id });
+                console.log(res);
+                alert(res.message);
+                row.remove();
+            } catch (error) {
+                console.log(error);
+                const errorMessage = error.responseJSON ? error.responseJSON.message : "Có lỗi xảy ra";
+                alert(errorMessage);
+            }
+        });
+
 
         $(document).on('click', '.tableViewAllKey input[type="checkbox"]', async function () {
             const userId = $(this).data('userid');

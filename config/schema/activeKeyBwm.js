@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 const activeKeys = new Schema({
     key: String,
     active: Boolean,
+    note: String,
     modifyBy: String,
 }, {
     timestamps: {
