@@ -72,21 +72,21 @@ class accountControllers {
         }
     }
 
-    // async _registerAccount(req, res) {
-    //     try {
-    //         const { username, password } = req.body
-    //         const searchAccount = await accountsSchema.find({ username })
-    //         console.log(searchAccount.length)
-    //         if (searchAccount.length > 0) return res.status(400).json({ message: 'Đã tồn tại' })
-    //         let newAccount = new accountsSchema({ username, password });
-    //         await newAccount.save();
+    async _registerAccount(req, res) {
+        try {
+            const { username, password } = req.body
+            const searchAccount = await accountsSchema.find({ username })
+            console.log(searchAccount.length)
+            if (searchAccount.length > 0) return res.status(400).json({ message: 'Đã tồn tại' })
+            let newAccount = new accountsSchema({ username, password });
+            await newAccount.save();
 
-    //         return res.status(201).json(newAccount)
-    //     } catch (error) {
-    //         console.log(error)
-    //         return res.status(500).json(error.message)
-    //     }
-    // }
+            return res.status(201).json(newAccount)
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json(error.message)
+        }
+    }
 
     async mdwVerifyJWT(req, res, next) {
         try {
